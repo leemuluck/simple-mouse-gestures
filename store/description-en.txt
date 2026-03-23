@@ -1,0 +1,16 @@
+Simple and privacy-friendly mouse gesture extension.
+
+Navigate your browser quickly with right-click + drag.
+
+[ Gestures ]
+← Drag left: Go back
+→ Drag right: Go forward
+↓→ Drag down + right: Close tab
+
+[ Features ]
+- Zero data collection: No external server communication whatsoever
+- Open source: All code is public and auditable
+- Lightweight: Minimal permissions (only "tabs" for closing)
+- Visual feedback: Gesture trail displayed on screen
+
+Tired of mouse gesture extensions with shady privacy practices? Simple Mouse Gestures is fully open source — verify the code yourself.

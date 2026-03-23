@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Simple Mouse Gestures"
+  },
+  "extDescription": {
+    "message": "Simple and privacy-friendly mouse gesture extension. Navigate with right-click drag."
+  },
+  "gestureBack": {
+    "message": "← Back"
+  },
+  "gestureForward": {
+    "message": "Forward →"
+  },
+  "gestureClose": {
+    "message": "✕ Close Tab"
+  }
+}

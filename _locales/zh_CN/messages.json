@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Simple Mouse Gestures"
+  },
+  "extDescription": {
+    "message": "简洁安全的鼠标手势扩展。通过右键拖动快速操控浏览器。"
+  },
+  "gestureBack": {
+    "message": "← 后退"
+  },
+  "gestureForward": {
+    "message": "前进 →"
+  },
+  "gestureClose": {
+    "message": "✕ 关闭标签页"
+  }
+}
