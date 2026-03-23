@@ -13,4 +13,4 @@
 - 轻量快速：仅使用最少权限（tabs 权限1个）
 - 视觉反馈：手势轨迹实时显示在屏幕上
 
-担心 CRXmouse、Gesturefy 等扩展的隐私问题？Simple Mouse Gestures 完全开源，欢迎自行审查代码。
+担心鼠标手势扩展的隐私问题？Simple Mouse Gestures 完全开源，欢迎自行审查代码。

@@ -16,7 +16,7 @@ A simple and privacy-friendly mouse gesture extension for Chrome.
 
 **This extension does NOT collect any data. Zero. None.**
 
-다른 마우스 제스처 확장프로그램(CRXmouse, Gesturefy 등)은 사용자의 브라우징 데이터를 수집하여 외부 서버로 전송하는 것이 알려져 있습니다.
+일부 마우스 제스처 확장프로그램은 사용자의 브라우징 데이터를 수집하여 외부 서버로 전송하는 것이 알려져 있습니다.
 
 Simple Mouse Gestures는 다릅니다:
 
