@@ -3,10 +3,13 @@
 
   const MIN_DISTANCE = 20;
   const DIRECTION_THRESHOLD = 0.7;
+  const DOUBLE_CLICK_TIME = 300; // ms
+  const DOUBLE_CLICK_DIST = 10; // px
 
-  let isGesturing = false;
-  let gesturePerformed = false;
+  let state = "PASSIVE"; // PASSIVE -> PENDING -> ACTIVE
   let segments = [];
+  let startX = 0;
+  let startY = 0;
   let lastSegX = 0;
   let lastSegY = 0;
   let trail = null;
@@ -14,7 +17,13 @@
   let lastTrailX = 0;
   let lastTrailY = 0;
 
+  // Double-right-click tracking
+  let lastContextTime = 0;
+  let lastContextX = 0;
+  let lastContextY = 0;
+
   function createTrailCanvas() {
+    removeTrailCanvas();
     trail = document.createElement("canvas");
     trail.id = "__mouse_gesture_trail";
     trail.style.cssText =
@@ -100,42 +109,74 @@
     }, 400);
   }
 
-  // Always suppress the default context menu on right-click DOWN
-  // so that we can track mouse movement freely
+  function reset() {
+    state = "PASSIVE";
+    removeTrailCanvas();
+    segments = [];
+  }
+
+  // Context menu: block by default, allow on double-right-click
   document.addEventListener(
     "contextmenu",
     (e) => {
-      if (isGesturing || gesturePerformed) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        return false;
+      const now = Date.now();
+      const dx = e.clientX - lastContextX;
+      const dy = e.clientY - lastContextY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const elapsed = now - lastContextTime;
+
+      // Double-right-click: allow native context menu
+      if (elapsed < DOUBLE_CLICK_TIME && dist < DOUBLE_CLICK_DIST) {
+        lastContextTime = 0;
+        reset();
+        return; // Allow native menu
       }
+
+      // Record this click for double-click detection
+      lastContextTime = now;
+      lastContextX = e.clientX;
+      lastContextY = e.clientY;
+
+      // Block context menu
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     },
     true
   );
 
   document.addEventListener(
-    "mousedown",
+    "pointerdown",
     (e) => {
       if (e.button !== 2) return;
-      e.preventDefault();
-      isGesturing = true;
-      gesturePerformed = false;
-      lastSegX = lastTrailX = e.clientX;
-      lastSegY = lastTrailY = e.clientY;
+      state = "PENDING";
+      startX = lastSegX = lastTrailX = e.clientX;
+      startY = lastSegY = lastTrailY = e.clientY;
       segments = [];
-      createTrailCanvas();
+
+      // Capture pointer so we get events even outside the element
+      e.target.setPointerCapture(e.pointerId);
     },
     true
   );
 
   document.addEventListener(
-    "mousemove",
+    "pointermove",
     (e) => {
-      if (!isGesturing) return;
+      if (state === "PASSIVE") return;
 
-      // Draw trail
+      const dx0 = e.clientX - startX;
+      const dy0 = e.clientY - startY;
+
+      if (state === "PENDING") {
+        if (Math.sqrt(dx0 * dx0 + dy0 * dy0) >= MIN_DISTANCE) {
+          state = "ACTIVE";
+          createTrailCanvas();
+        } else {
+          return;
+        }
+      }
+
       if (trailCtx) {
         trailCtx.beginPath();
         trailCtx.moveTo(lastTrailX, lastTrailY);
@@ -153,8 +194,6 @@
         if (dir !== segments[segments.length - 1]) {
           segments.push(dir);
         }
-        // Always update the segment origin so the next direction
-        // is measured from the latest position, not the original start
         lastSegX = e.clientX;
         lastSegY = e.clientY;
       }
@@ -163,37 +202,30 @@
   );
 
   document.addEventListener(
-    "mouseup",
+    "pointerup",
     (e) => {
-      if (e.button !== 2 || !isGesturing) return;
-      isGesturing = false;
-      removeTrailCanvas();
+      if (e.button !== 2) return;
 
-      const action = matchGesture(segments);
+      if (state === "ACTIVE") {
+        const action = matchGesture(segments);
+        if (action) {
+          showHint(action);
 
-      if (action) {
-        gesturePerformed = true;
-        showHint(action);
-
-        if (action === "back") {
-          history.back();
-        } else if (action === "forward") {
-          history.forward();
-        } else if (action === "close") {
-          try {
-            chrome.runtime.sendMessage({ action: "closeTab" });
-          } catch (e) {
-            window.close();
+          if (action === "back") {
+            history.back();
+          } else if (action === "forward") {
+            history.forward();
+          } else if (action === "close") {
+            try {
+              chrome.runtime.sendMessage({ action: "closeTab" });
+            } catch (err) {
+              window.close();
+            }
           }
         }
       }
 
-      // Reset gesturePerformed after a short delay to allow contextmenu event to be caught
-      setTimeout(() => {
-        gesturePerformed = false;
-      }, 100);
-
-      segments = [];
+      reset();
     },
     true
   );

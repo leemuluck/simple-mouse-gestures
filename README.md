@@ -11,6 +11,7 @@ A simple and privacy-friendly mouse gesture extension for Chrome.
 | Right-click + drag ← | Go back / 뒤로가기 |
 | Right-click + drag → | Go forward / 앞으로가기 |
 | Right-click + drag ↓→ | Close tab / 탭닫기 |
+| Double right-click | Context menu / 컨텍스트 메뉴 |
 
 ## Privacy | 개인정보
 
@@ -22,7 +23,7 @@ Simple Mouse Gestures는 다릅니다:
 
 - **외부 서버 통신 없음** — `fetch`, `XMLHttpRequest`, `WebSocket` 등 네트워크 코드가 전혀 없습니다
 - **데이터 저장 없음** — `localStorage`, `chrome.storage`, 쿠키 등 어떤 저장소도 사용하지 않습니다
-- **전체 코드 공개** — 코드가 150줄 수준이라 누구나 직접 확인할 수 있습니다
+- **전체 코드 공개** — 코드가 230줄 수준이라 누구나 직접 확인할 수 있습니다
 - **최소 권한** — `tabs` 권한 1개만 사용 (탭 닫기 용도)
 
 직접 확인하세요: [`content.js`](content.js) | [`background.js`](background.js) | [`manifest.json`](manifest.json)
