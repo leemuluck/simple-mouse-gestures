@@ -116,17 +116,20 @@
     const action = matchGesture(segments);
     if (!action) return;
     showHint(action);
-    if (action === "back") {
-      history.back();
-    } else if (action === "forward") {
-      history.forward();
-    } else if (action === "close") {
-      try {
-        chrome.runtime.sendMessage({ action: "closeTab" });
-      } catch (err) {
-        window.close();
+    // Delay execution to let contextmenu event pass first
+    setTimeout(() => {
+      if (action === "back") {
+        history.back();
+      } else if (action === "forward") {
+        history.forward();
+      } else if (action === "close") {
+        try {
+          chrome.runtime.sendMessage({ action: "closeTab" });
+        } catch (err) {
+          window.close();
+        }
       }
-    }
+    }, 10);
   }
 
   // --- Event listeners (all capture phase) ---
