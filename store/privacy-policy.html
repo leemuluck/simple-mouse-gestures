@@ -17,11 +17,15 @@
   <p class="date">Last updated: 2026-10-13</p>
 
   <h2>Local processing</h2>
-  <p>Simple Mouse Gestures recognizes mouse gestures locally in your browser. Mouse coordinates, timing, and gesture directions are processed temporarily in memory. This input is not saved or sent to a server.</p>
+  <p>Simple Mouse Gestures temporarily accesses and uses user-activity input locally in your browser: gesture-related mouse coordinates, button events, timing, and directions, plus Escape input to cancel a gesture. This processing provides navigation, tab closing, the gesture trail, and double-right-click menu behavior. It does not record the text you type or perform general keystroke logging.</p>
+  <p>This input is handled in memory only. It is not logged, written to persistent storage, or transmitted outside your browser. Temporary interaction state is replaced or cleared during gesture processing and is lost when the page or browser worker closes.</p>
 
-  <h2>Data collection and transmission</h2>
-  <p>The extension does not collect or persist personal data or browsing history, and does not use cookies, analytics, telemetry, advertising, remote code, or third-party network services. It does not share or sell user data.</p>
+  <h2>Data use and transmission</h2>
+  <p>The extension does not store input or browsing history, and does not use cookies, activity tracking, analytics, telemetry, advertising, remote code, or third-party network services. It does not share or sell the input it processes. The developer and third parties do not receive or have access to this input through the extension.</p>
   <p>The extension makes no requests to external servers. Back and forward gestures use normal browser navigation, which may cause the websites you visit to load content as usual.</p>
+
+  <h2>Limited use</h2>
+  <p>User-activity input is used solely for the disclosed mouse-gesture functionality, in accordance with the Chrome Web Store User Data Policy, including its Limited Use requirements. It is never used for advertising, profiling, creditworthiness, or unrelated purposes. The developer does not receive, access, or manually read this input.</p>
 
   <h2>Website access and permissions</h2>
   <p>The extension declares a content script for all supported website URLs and matching embedded frames. This site access lets it listen for mouse events and draw a gesture trail and feedback in the page DOM. Chrome may display a warning that the extension can read and change website data. You can restrict site access through Chrome's extension settings.</p>

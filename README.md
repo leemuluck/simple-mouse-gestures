@@ -1,8 +1,8 @@
 # Simple Mouse Gestures
 
-간단하고 개인정보를 수집하지 않는 Chrome 마우스 제스처 확장프로그램입니다.
+마우스 입력을 기기 안에서만 일시적으로 처리하며 저장하거나 추적하지 않는 Chrome 제스처 확장프로그램입니다.
 
-A small Chrome extension for mouse gesture navigation, with no analytics, remote code, or data collection.
+A small Chrome extension for mouse gesture navigation. Gesture input is processed temporarily in your browser, without input storage, tracking, analytics, or external transmission.
 
 ## Gestures | 제스처
 
@@ -23,12 +23,12 @@ A gesture cancels after 3 seconds without movement, or after 30 seconds in total
 
 ## Privacy and permissions | 개인정보와 권한
 
-- **Local processing:** Mouse coordinates and gesture directions are held temporarily in memory to recognize gestures. The extension does not store browsing history, mouse input, or personal data, and has no analytics or telemetry.
+- **Local input handling:** Gesture-related mouse coordinates, timing, and directions, plus Escape cancellation input, are processed temporarily in memory for navigation and the double-right-click menu. This is local user-activity handling. Input is not logged or written to persistent storage, and the extension has no browsing-history storage, tracking, analytics, or telemetry.
 - **No external data transmission:** There are no extension requests to external servers, remote scripts, or third-party dependencies. Back/forward navigation may load websites normally, just like browser navigation buttons.
 - **Page access:** The content script runs on permitted websites and matching frames (`<all_urls>`) so it can receive mouse input and draw the trail and feedback in the page DOM. Chrome may warn that the extension can read and change website data. An empty API `permissions` list does not remove this website access.
 - **No `tabs` permission:** Closing the sending tab uses `chrome.tabs.remove()` without requesting access to sensitive tab metadata. No storage, cookies, history, or network interception API permissions are requested.
 
-마우스 위치와 인식 결과는 메모리에서 일시적으로 처리하며 저장하거나 외부로 보내지 않습니다. 웹 페이지의 입력을 감지하고 궤적을 표시하기 위해 사이트 접근 권한을 사용하므로 Chrome의 사이트 데이터 접근 경고가 표시될 수 있습니다. 탭을 닫는 데 `tabs` 권한은 필요하지 않으며 요청하지 않습니다. 뒤로가기·앞으로가기에 따른 웹사이트 자체의 통신은 일반 브라우저 탐색과 같습니다.
+제스처용 마우스 위치·시간·방향과 Escape 취소 입력은 탐색과 더블 우클릭 메뉴를 위해 메모리에서 일시적으로 처리합니다. 이 로컬 사용자 활동 처리는 입력 기록을 저장하거나 외부로 보내지 않습니다. 웹 페이지의 입력을 감지하고 궤적을 표시하기 위해 사이트 접근 권한을 사용하므로 Chrome의 사이트 데이터 접근 경고가 표시될 수 있습니다. 탭을 닫는 데 `tabs` 권한은 필요하지 않으며 요청하지 않습니다. 뒤로가기·앞으로가기에 따른 웹사이트 자체의 통신은 일반 브라우저 탐색과 같습니다.
 
 Review the source: [content.js](content.js), [recognizer.js](recognizer.js), [background.js](background.js), [manifest.json](manifest.json). See the [privacy policy](store/privacy-policy.html).
 

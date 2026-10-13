@@ -1,4 +1,4 @@
-Simple and privacy-friendly mouse gesture extension.
+Mouse gestures processed locally, with no tracking or input storage.
 
 Hold the right mouse button, draw a gesture, and release:
 ← Left: Go back
@@ -8,8 +8,8 @@ Hold the right mouse button, draw a gesture, and release:
 To open the normal context menu, right-click twice in the same spot within 300 ms. Press Escape to cancel a gesture. A single right-click is reserved for gesture input.
 
 Features:
-- Local gesture processing with visible trail and action feedback
-- No data collection, persistent browsing history, analytics, or external server requests
+- Gesture-related mouse coordinates, timing, and Escape cancellation input are processed temporarily in memory, with visible trail and action feedback
+- No input or browsing history storage, tracking, analytics, or external data transmission
 - Open source, with reproducible packaging and automated checks
 - No tabs, storage, cookies, or history API permissions
 - English, Korean, Simplified Chinese, and Traditional Chinese

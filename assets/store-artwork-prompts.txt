@@ -7,3 +7,8 @@ Use case: text-localization and logo-brand. Image 1 is the edit target: an exist
 
 Promotional tile prompt:
 Use case: logo-brand. Image 1 is edit target: old Chrome Web Store small promotional tile (440x280 landscape). Image 2 is the new icon reference. Replace the outdated blue design with a polished cohesive promotional tile using the exact recognizable white mouse and coral angular gesture icon from Image 2 on a flat near-black background. Compose the icon on the left with large clean white type on the right. Exact visible text: 'Simple Mouse' on one line, 'Gestures' on the next, and smaller 'Local. Private. Simple.' below. Bold readable typography at the small final440x280 size, generous padding, modern minimal flat design, no additional symbols or text, no permissions claim, no gradients, no watermarks. Output a single complete440x280 promotional tile, aspect ratio11:7.
+
+
+Privacy wording clarification edit, 2026-10-13 (built-in image_gen):
+Use case: text-localization. This is a precise single-text edit of the attached Chrome Web Store screenshot. Replace only the visible phrase 'No data collection' beneath the shield icon with 'No input storage'. Keep the entire rest of the image exactly unchanged: all other text, product title, subtitle, three gesture cards/arrows, icon, background, colors, layout, padding, sizes, symbols, line breaks and wording. The replacement must use the same white font style, size, baseline, and centered position in the existing card. Do not redesign, move, add, or remove anything else. Preserve landscape1280x800 aspect ratio and opaque background. Correct exact new text: 'No input storage'.
+Final screenshot resized with sharp Lanczos3 to1280x800 RGB PNG.
