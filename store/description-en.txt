@@ -1,16 +1,21 @@
 Simple and privacy-friendly mouse gesture extension.
 
-Navigate your browser quickly with right-click + drag.
+Hold the right mouse button, draw a gesture, and release:
+← Left: Go back
+→ Right: Go forward
+↓→ Down then right: Close the current tab
 
-[ Gestures ]
-← Drag left: Go back
-→ Drag right: Go forward
-↓→ Drag down + right: Close tab
+To open the normal context menu, right-click twice in the same spot within 300 ms. Press Escape to cancel a gesture. A single right-click is reserved for gesture input.
 
-[ Features ]
-- Zero data collection: No external server communication whatsoever
-- Open source: All code is public and auditable
-- Lightweight: Minimal permissions (only "tabs" for closing)
-- Visual feedback: Gesture trail displayed on screen
+Features:
+- Local gesture processing with visible trail and action feedback
+- No data collection, persistent browsing history, analytics, or external server requests
+- Open source, with reproducible packaging and automated checks
+- No tabs, storage, cookies, or history API permissions
+- English, Korean, Simplified Chinese, and Traditional Chinese
 
-Tired of mouse gesture extensions with shady privacy practices? Simple Mouse Gestures is fully open source — verify the code yourself.
+Website access is required to detect mouse input and draw feedback on supported pages and embedded frames. Chrome may warn that the extension can read and change website data; this access is used locally for gestures. Back/forward navigation loads websites normally.
+
+Chrome internal pages, the Chrome Web Store, other extensions' pages, and the built-in PDF viewer are restricted. Local files and incognito windows need separate permission in Chrome settings. Native context-menu timing can vary by platform and input device. If a website's own right-button controls conflict, restrict this extension's site access in Chrome.
+
+Source: https://github.com/leemuluck/simple-mouse-gestures

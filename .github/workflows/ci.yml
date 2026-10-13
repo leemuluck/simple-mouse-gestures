@@ -1,0 +1,26 @@
+name: Verify extension
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Runtime unit tests
+        run: node --test tests/*.test.cjs
+      - name: Verify release package and locales
+        run: python3 -m unittest discover -s tests -p '*_test.py'
+      - name: Reject stale upload archive
+        run: python3 scripts/package.py --check

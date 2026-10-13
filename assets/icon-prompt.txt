@@ -1,0 +1,6 @@
+Generated with the built-in image_gen tool on 2026-10-13.
+Master: icon-master.png (1254 x 1254 RGBA, original generated pixels).
+Runtime sizes: 16, 32, 48, and 128 pixels, downsampled with sharp Lanczos3.
+
+Prompt:
+Use case: logo-brand. Asset type: production Chrome extension app icon for Simple Mouse Gestures. Primary request: design one polished modern icon communicating a computer mouse gesture, clean and instantly recognizable at 16px. Subject: a bold minimal white mouse silhouette integrated with one thick angular right-angle gesture path ending in a small arrow, using a restrained warm coral-red accent to echo the extension's red gesture trail. Backdrop: a near-black rounded-square tile, with genuine transparent pixels outside the tile. Style: premium flat geometric graphic, crisp edges, generous negative space, very few large shapes, front-facing and centered. Composition: square 1024x1024 master, tile nearly fills the canvas with a small uniform transparent outer margin. Constraints: one final icon only, no text, no letters, no typography, no labels, no device mockup, no grid, no multiple variants, no gradients or shadows, no fine details or thin strokes, preserve a simple readable silhouette when reduced to 16x16.

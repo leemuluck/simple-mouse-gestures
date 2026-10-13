@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,38 +9,29 @@
     h1 { font-size: 24px; border-bottom: 2px solid #eee; padding-bottom: 12px; }
     h2 { font-size: 18px; margin-top: 28px; }
     p { margin: 12px 0; }
-    .date { color: #888; font-size: 14px; }
+    .date { color: #666; font-size: 14px; }
   </style>
 </head>
 <body>
   <h1>Simple Mouse Gestures - Privacy Policy</h1>
-  <p class="date">Last updated: 2026-03-23</p>
+  <p class="date">Last updated: 2026-10-13</p>
 
-  <h2>Overview</h2>
-  <p>Simple Mouse Gestures is a browser extension that enables mouse gesture navigation. Your privacy is important to us, and this extension is designed with privacy as a core principle.</p>
+  <h2>Local processing</h2>
+  <p>Simple Mouse Gestures recognizes mouse gestures locally in your browser. Mouse coordinates, timing, and gesture directions are processed temporarily in memory. This input is not saved or sent to a server.</p>
 
-  <h2>Data Collection</h2>
-  <p>This extension does <strong>not</strong> collect, store, transmit, or share any user data. Specifically:</p>
-  <ul>
-    <li>No personal information is collected</li>
-    <li>No browsing history is tracked</li>
-    <li>No cookies are used</li>
-    <li>No analytics or telemetry data is sent</li>
-    <li>No data is transmitted to any external server</li>
-  </ul>
+  <h2>Data collection and transmission</h2>
+  <p>The extension does not collect or persist personal data or browsing history, and does not use cookies, analytics, telemetry, advertising, remote code, or third-party network services. It does not share or sell user data.</p>
+  <p>The extension makes no requests to external servers. Back and forward gestures use normal browser navigation, which may cause the websites you visit to load content as usual.</p>
 
-  <h2>How It Works</h2>
-  <p>The extension only listens for mouse events (right-click drag) within the current tab to detect gestures. All processing happens locally in your browser. No data leaves your device.</p>
+  <h2>Website access and permissions</h2>
+  <p>The extension declares a content script for all supported website URLs and matching embedded frames. This site access lets it listen for mouse events and draw a gesture trail and feedback in the page DOM. Chrome may display a warning that the extension can read and change website data. You can restrict site access through Chrome's extension settings.</p>
+  <p>The extension requests no additional API permissions. In particular, it does not request the <code>tabs</code> permission: closing the tab that sent the gesture uses <code>chrome.tabs.remove()</code>, which does not require that permission. No storage, cookies, history, or network interception API permissions are requested.</p>
+  <p>Chrome restricts content scripts on internal pages, the Chrome Web Store, other extensions' pages, and its built-in PDF viewer. Local file access and incognito access require separate user settings in Chrome.</p>
 
-  <h2>Permissions</h2>
-  <ul>
-    <li><strong>tabs</strong>: Required solely to close the current tab when the close gesture is performed.</li>
-  </ul>
-
-  <h2>Open Source</h2>
-  <p>This extension is fully open source. You can review the complete source code to verify these claims.</p>
+  <h2>Open source</h2>
+  <p>The complete source code is available in the <a href="https://github.com/leemuluck/simple-mouse-gestures">GitHub repository</a>. The release archive is generated from a fixed allowlist, and automated checks verify that its runtime files match the source.</p>
 
   <h2>Contact</h2>
-  <p>If you have any questions about this privacy policy, please open an issue on the GitHub repository.</p>
+  <p>For questions about this policy, please <a href="https://github.com/leemuluck/simple-mouse-gestures/issues">open a GitHub issue</a>.</p>
 </body>
 </html>
